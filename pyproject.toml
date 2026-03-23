@@ -1,0 +1,15 @@
+[project]
+name = "can-i-run-ai-dashboard"
+version = "0.1.0"
+description = "Streamlit dashboard for can-i-run-ai"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+  "canirunai @ git+https://github.com/kuseo/can-i-run-ai.git",
+  "pandas>=2.2.0",
+  "streamlit>=1.44.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
