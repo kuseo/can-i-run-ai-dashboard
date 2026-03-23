@@ -9,6 +9,19 @@ service:
   type: ClusterIP
   port: 8501
 
+istio:
+  enabled: true
+  baseDomain: fde.makina.rocks
+  gateway:
+    selector:
+      istio: ingressgateway
+    port: 80
+    protocol: HTTP
+  virtualService:
+    subdomain: canirunai
+    gateways: []
+    pathPrefix: /
+
 resources: {}
 
 podAnnotations: {}

@@ -1,0 +1,19 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ include "can-i-run-ai-dashboard.gatewayName" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "can-i-run-ai-dashboard.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- toYaml .Values.istio.gateway.selector | nindent 4 }}
+  servers:
+    - port:
+        number: {{ .Values.istio.gateway.port }}
+        name: http
+        protocol: {{ .Values.istio.gateway.protocol }}
+      hosts:
+        - {{ include "can-i-run-ai-dashboard.gatewayHost" . | quote }}
+{{- end }}

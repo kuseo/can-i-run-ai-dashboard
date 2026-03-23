@@ -3,3 +3,13 @@
 
 2. Open the dashboard:
   http://127.0.0.1:8501
+
+{{- if .Values.istio.enabled }}
+
+3. Istio exposure is enabled.
+  Namespace: {{ .Release.Namespace }}
+  Gateway: {{ include "can-i-run-ai-dashboard.gatewayName" . }}
+  Gateway Host: {{ include "can-i-run-ai-dashboard.gatewayHost" . }}
+  VirtualService: {{ include "can-i-run-ai-dashboard.virtualServiceName" . }}
+  VirtualService Host: {{ include "can-i-run-ai-dashboard.virtualServiceHost" . }}
+{{- end }}

@@ -27,3 +27,19 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/name: {{ include "can-i-run-ai-dashboard.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
+
+{{- define "can-i-run-ai-dashboard.gatewayName" -}}
+{{- printf "%s-gateway" (include "can-i-run-ai-dashboard.fullname" .) -}}
+{{- end -}}
+
+{{- define "can-i-run-ai-dashboard.gatewayHost" -}}
+{{- printf "*.%s" .Values.istio.baseDomain -}}
+{{- end -}}
+
+{{- define "can-i-run-ai-dashboard.virtualServiceName" -}}
+{{- printf "%s-virtualservice" (include "can-i-run-ai-dashboard.fullname" .) -}}
+{{- end -}}
+
+{{- define "can-i-run-ai-dashboard.virtualServiceHost" -}}
+{{- printf "%s.%s" .Values.istio.virtualService.subdomain .Values.istio.baseDomain -}}
+{{- end -}}
