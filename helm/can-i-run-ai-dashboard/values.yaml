@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: can-i-run-ai-dashboard
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8501
+
+resources: {}
+
+podAnnotations: {}
+podLabels: {}
+
+nameOverride: ""
+fullnameOverride: ""

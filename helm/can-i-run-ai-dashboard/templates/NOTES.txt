@@ -1,0 +1,5 @@
+1. Port-forward the service to access the dashboard locally:
+  kubectl port-forward svc/{{ include "can-i-run-ai-dashboard.fullname" . }} 8501:{{ .Values.service.port }}
+
+2. Open the dashboard:
+  http://127.0.0.1:8501
