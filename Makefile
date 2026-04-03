@@ -3,7 +3,7 @@ IMAGE_TAG ?= v0.1.0
 IMAGE := $(IMAGE_REPOSITORY):$(IMAGE_TAG)
 
 HELM_RELEASE ?= can-i-run-ai-dashboard
-HELM_NAMESPACE ?= rpms
+HELM_NAMESPACE ?= default
 HELM_CHART ?= helm/can-i-run-ai-dashboard
 HELM_VALUES ?=
 HELM_ARGS ?=
