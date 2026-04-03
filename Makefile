@@ -1,9 +1,9 @@
-IMAGE_REPOSITORY ?= can-i-run-ai-dashboard
-IMAGE_TAG ?= latest
+IMAGE_REPOSITORY ?= ghcr.io/kuseo/can-i-run-ai-dashboard
+IMAGE_TAG ?= v0.1.0
 IMAGE := $(IMAGE_REPOSITORY):$(IMAGE_TAG)
 
 HELM_RELEASE ?= can-i-run-ai-dashboard
-HELM_NAMESPACE ?= default
+HELM_NAMESPACE ?= rpms
 HELM_CHART ?= helm/can-i-run-ai-dashboard
 HELM_VALUES ?=
 HELM_ARGS ?=
@@ -33,7 +33,7 @@ docker-push: docker-build
 	docker push $(IMAGE)
 
 helm-deploy:
-	helm upgrade --install $(HELM_RELEASE) $(HELM_CHART) --namespace $(HELM_NAMESPACE) --create-namespace $(HELM_IMAGE_ARGS) $(HELM_VALUES_ARG) $(HELM_ARGS)
+	helm upgrade --install $(HELM_RELEASE) $(HELM_CHART) --namespace $(HELM_NAMESPACE) $(HELM_IMAGE_ARGS) $(HELM_VALUES_ARG) $(HELM_ARGS)
 
 local-dev-setup:
 	uv sync --frozen --python 3.14
