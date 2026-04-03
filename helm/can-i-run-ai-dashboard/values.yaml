@@ -11,7 +11,7 @@ service:
 
 istio:
   enabled: true
-  baseDomain: fde.makina.rocks
+  baseDomain: example.com
   gateway:
     selector:
       istio: ingressgateway
